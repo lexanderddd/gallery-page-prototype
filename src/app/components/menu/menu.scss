@@ -1,0 +1,27 @@
+.menu {
+
+  display: flex;
+
+  width: 200px;
+  font-weight: 700;
+  font-size: 14px;
+
+  .item {
+    a {
+      text-wrap: nowrap;
+      color: darkgray;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    padding: 10px 20px;
+
+    &.active {
+      a {
+        color: yellowgreen;
+      }
+    }
+  }
+}

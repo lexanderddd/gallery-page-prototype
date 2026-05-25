@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  width: 56px;
+  height: 56px;
+  position: fixed;
+  top: 50%;
+  cursor: pointer;
+
+  &.prev {
+    margin-left: -60px;
+  }
+  &.next {
+    margin-left: 4px;
+  }
+}
+
+.modal-container {
+  display: flex;
+  .nav {
+    display: flex;
+    width: 62px;
+    height: calc(100vh - 100px);
+    position: relative;
+  }
+}

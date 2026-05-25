@@ -1,0 +1,10 @@
+<div class="model-list">
+  <div *ngFor="let model of models" class="item">
+    <div class="model-card-wrapper">
+      <app-model-card
+        [model]="model"
+      ></app-model-card>
+    </div>
+
+  </div>
+</div>

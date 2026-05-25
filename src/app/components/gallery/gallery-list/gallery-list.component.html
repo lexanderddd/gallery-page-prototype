@@ -1,0 +1,9 @@
+<div class="gallery-list">
+  <div *ngFor="let gallery of galleries" class="gallery-item">
+    <app-gallery-card
+      [gallery]="gallery"
+      (onShow)="onShowGallery(gallery)"
+      [modalShowMode]="modalShowMode"
+    ></app-gallery-card>
+  </div>
+</div>

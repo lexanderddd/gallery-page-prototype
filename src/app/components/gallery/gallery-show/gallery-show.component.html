@@ -1,0 +1,113 @@
+<div class="gallery-container" *ngIf="gallery">
+
+  <div class="content">
+    <div class="title" [class.title-modal]="modalMode">
+      {{ gallery.title }}
+    </div>
+
+    <div class="description" [class.title-modal]="modalMode">
+      Какое-то описание...
+    </div>
+
+    <div>
+    </div>
+    <div class="images-wrapper">
+      <div class="images" *ngIf="gallery.images">
+        <div class="image"
+             [class.selected-labels]="selectedAddModels && !addModelForm"
+             *ngFor="let image of gallery.images; index as i"
+             (click)="addLabel($event, i)"
+        >
+          <img [src]="'/assets/images/' + image.webPath" />
+
+          <div
+            class="marker"
+            *ngFor="let model of galleryModelsByGallery?.[gallery.slug]?.[image.id] || []"
+            [style.left.px]="model.posX"
+            [style.top.px]="model.posY"
+            (click)="showModel($event, model)"
+          >
+            <img
+              src="/assets/images/gallery/cursor-plus.png"
+            />
+          </div>
+
+        </div>
+      </div>
+      <div class="tools">
+        <div class="add-label" (click)="setSelectedAddModels(!selectedAddModels)" [class.selected-labels]="selectedAddModels">
+
+          <!-- Модальное -->
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" *ngIf="modalMode">
+            <path d="M15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15C0 6.71573 6.71573 0 15 0ZM14 8V13C14 13.5523 13.5523 14 13 14H8V16H13C13.5523 16 14 16.4477 14 17V22H16V17C16 16.4477 16.4477 16 17 16H22V14H17C16.4477 14 16 13.5523 16 13V8H14Z" fill="#0881CC"/>
+          </svg>
+
+          <!-- Не модальное -->
+
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!modalMode">
+            <rect x="1" y="1" width="26" height="26" rx="13" stroke="#92908C" stroke-width="2"/>
+            <path d="M15 12C15 12.5523 15.4477 13 16 13H21V15H16C15.4477 15 15 15.4477 15 16V21H13V16C13 15.4477 12.5523 15 12 15H7V13H12C12.5523 13 13 12.5523 13 12V7H15V12Z" fill="#92908C" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  #modelCard
+  class="model-card"
+  [class.display]="modelPreview"
+  [class.left]="modelPreview?.placement === 'left'"
+  [style.left.px]="modelPreview?.posX"
+  [style.top.px]="modelPreview?.posY"
+>
+  <div class="model-card-wrapper">
+    <app-model-card [model]="modelPreview?.model ?? undefined">
+    </app-model-card>
+  </div>
+
+  <div class="delete" (click)="modelPreview ? deleteLabel(modelPreview.labelId, modelPreview.imageId) : null">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M2 3.80078H3.33333H14" stroke="#0881CC" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.33398 3.8V2.4C5.33398 2.0287 5.47446 1.6726 5.72451 1.41005C5.97456 1.1475 6.3137 1 6.66732 1H9.33398C9.68761 1 10.0267 1.1475 10.2768 1.41005C10.5268 1.6726 10.6673 2.0287 10.6673 2.4V3.8M12.6673 3.8V13.6C12.6673 13.9713 12.5268 14.3274 12.2768 14.5899C12.0267 14.8525 11.6876 15 11.334 15H4.66732C4.3137 15 3.97456 14.8525 3.72451 14.5899C3.47446 14.3274 3.33398 13.9713 3.33398 13.6V3.8H12.6673Z" stroke="#0881CC" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.66797 7.30078V11.5008" stroke="#0881CC" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9.33398 7.30078V11.5008" stroke="#0881CC" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+</div>
+
+<div
+  #modelForm
+  class="add-model-form"
+  [class.display]="addModelForm"
+  [class.left]="addModelForm?.placement === 'left'"
+  [style.left.px]="addModelForm?.posX"
+  [style.top.px]="addModelForm?.posY"
+>
+  Ссылка на модель
+  <form [formGroup]="form" (ngSubmit)="onSubmitAddModelForm()">
+    <div class="error" *ngIf="addModelErrorMessage">
+      {{ addModelErrorMessage }}
+    </div>
+    <input
+      [title]="'Ссылка на модель'"
+      formControlName="modelUrl"
+    >
+    <div class="buttons">
+      <app-button [title]="'Добавить'" [type]="'submit'">
+        Добавить
+      </app-button>
+
+      <app-button [title]="'Отменить'" (click)="closeAddModelForm()">
+        Отменить
+      </app-button>
+    </div>
+  </form>
+</div>
+

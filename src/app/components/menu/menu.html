@@ -1,0 +1,20 @@
+<div class="menu">
+
+  <div class="item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+    <a [routerLink]="'/'">
+      Что тут?
+    </a>
+  </div>
+
+  <div class="item" [routerLinkActive]="'active'">
+    <a [routerLink]="'/' + ROUTE_PATH.models">
+      Модели
+    </a>
+  </div>
+
+  <div class="item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <a [routerLink]="'/' + ROUTE_PATH.galleries">
+      Галерея
+    </a>
+  </div>
+</div>

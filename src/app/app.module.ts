@@ -3,16 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import {provideAnimations} from "@angular/platform-browser/animations";
+import {Menu} from "./components/menu/menu";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        Menu
+    ],
+  providers: [
+    provideAnimations(),
   ],
-  providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

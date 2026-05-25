@@ -1,0 +1,10 @@
+<div class="title">
+  <h1>
+    {{ model?.title }}
+  </h1>
+</div>
+<div class="images" *ngIf="model?.images">
+  <div class="image" *ngFor="let image of model?.images; index as i">
+    <img [src]="'/assets/images/' + image?.web_path" />
+  </div>
+</div>

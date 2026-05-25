@@ -1,0 +1,21 @@
+<div class="nav" *ngIf="galleries && prevIndex !== null">
+  <a class="button prev" (click)="goPrev()" [routerLink]="'/' + ROUTE_PATH.galleriesShow + '/' + galleries[prevIndex].slug">
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+      <path d="M8.77783 1L1.00005 8.51705L8.77783 16.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+<div class="modal-container">
+  <div class="gallery-container">
+    <router-outlet (activate)="setGalleryShowComponent($event)"></router-outlet>
+  </div>
+</div>
+
+<div class="nav" *ngIf="galleries && nextIndex !== null">
+  <a class="button next" (click)="goNext()" [routerLink]="'/' + ROUTE_PATH.galleriesShow + '/' + galleries[nextIndex].slug">
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+      <path d="M1 16.75L8.77778 9.23295L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>

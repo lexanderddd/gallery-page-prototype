@@ -1,0 +1,10 @@
+<a [routerLink]="'/' + ROUTE_PATH.modelsShow + '/' + model?.slug">
+  <img *ngIf="model?.images?.[0] as image" src="/assets/images/{{ image.web_path }}">
+</a>
+<div class="title">
+  <a [routerLink]="'/' + ROUTE_PATH.modelsShow + '/' + model?.slug">
+    {{ model?.title }}
+  </a>
+</div>
+
+

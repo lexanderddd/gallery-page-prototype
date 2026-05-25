@@ -1,0 +1,36 @@
+.images-block {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+}
+
+.image_01 {
+
+  width: 550px;
+  max-height: 350px;
+  object-fit: cover;
+
+  border: 1px #dddddd solid;
+  &_01 {
+    object-position: top;
+  }
+  &_02 {
+    object-position: top;
+  }
+}
+
+// Лень, спать хочу
+.labels-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  img {
+    margin-left: 12px;
+    width: 48px;
+  }
+}
+
+h2, h3 {
+  margin: 48px 0 24px;
+}

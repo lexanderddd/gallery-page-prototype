@@ -1,0 +1,20 @@
+<div #backdrop
+     [@fadeInOut]="{
+     value: state,
+       params: {
+         animationIn: mainParams.animationIn,
+         animationOut: mainParams.animationOut
+       }
+     }"
+     (@fadeInOut.done)="onAnimationDone($event)"
+     (click)="onClick($event)"
+     class="backdrop"
+     [ngStyle]="backdropStylesInsert">
+  <ng-container #insertElement></ng-container>
+  <div *ngIf="mainParams.showCloseBtn" class="close" (click)="backdropComponentService.backdrop()">
+    <svg id="id-close-button" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="id-close-path1" d="M1 35L35 0.999999" stroke="#D0D0D0" stroke-width="2" stroke-linecap="round"/>
+      <path id="id-close-path2" d="M35 35L0.999999 0.999999" stroke="#D0D0D0" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>

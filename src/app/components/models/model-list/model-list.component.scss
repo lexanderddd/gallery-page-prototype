@@ -1,0 +1,11 @@
+.model-list {
+  /*justify-content: center;*/
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+}
+.model-card-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 208px;
+}

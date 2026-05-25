@@ -1,0 +1,43 @@
+<div class="gallery-block">
+
+  <div (click)="show($event)" class="image-block">
+    <a href="/galleries/gallery/{{gallery?.slug}}">
+      <img class="image" [src]="'/assets/images/' + gallery?.image"
+           [alt]="gallery?.title"
+      >
+      <div class="overlay"></div>
+    </a>
+
+  </div>
+
+  <a (click)="show($event)" href="/galleries/gallery/{{gallery?.slug}}" class="title" title="{{gallery?.title}}" [ngClass]="{'loading': !gallery}">
+    {{gallery?.title}}
+  </a>
+
+  <div class="info-block">
+    <div class="info" *ngIf="gallery">
+      <div class="views" *ngIf="gallery?.viewsCount ?? 0 > 0">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99997 3C9.86722 3 11.3975 3.83809 12.5078 4.74121C13.6207 5.64651 14.3868 6.67727 14.7461 7.21191C15.0581 7.67669 15.0874 8.26156 14.8047 8.75488C14.2095 9.79307 12.0637 12.9998 7.99899 13C3.9331 12.9999 1.78834 9.79152 1.1943 8.75391C0.91199 8.2607 0.941988 7.67643 1.25387 7.21191L1.40719 6.98828C1.80955 6.42064 2.51771 5.53322 3.49118 4.74121C4.60147 3.83805 6.13264 3.00003 7.99997 3ZM5.8486 5.21191C5.42168 5.43007 5.02324 5.70163 4.65524 6.00098C3.76743 6.72317 3.12678 7.55789 2.79977 8.03516C3.24334 8.78917 4.27539 10.2216 5.95309 10.9238C5.36676 10.1938 4.99997 9.15406 4.99997 8C4.99997 6.91585 5.3233 5.93235 5.8486 5.21191ZM10.1504 5.21191C10.6758 5.93239 11 6.91563 11 8C11 9.15398 10.6321 10.1928 10.0459 10.9229C11.7229 10.2206 12.755 8.78923 13.1992 8.03516C12.8721 7.55784 12.233 6.72285 11.3457 6.00098C10.9774 5.70142 10.5777 5.43016 10.1504 5.21191Z" fill="#C4C2BD" style="fill:#C4C2BD;fill:color(display-p3 0.7686 0.7608 0.7412);fill-opacity:1;"/>
+        </svg>
+        <span>{{ gallery.viewsCount }}</span>
+      </div>
+      <div class="comments" *ngIf="gallery?.commentsCount ?? 0 > 0">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.6642 3C12.9282 3 15.0001 4.01828 15.0001 6.37324L15 7.90625C15 9.98722 13.4411 11 11.2812 11C10.5769 10.9753 9.48438 11.6719 9.48438 11.6719C9.48438 11.6719 7.97465 12.7691 6.90637 13.5C5.83808 14.2309 5.23438 14.1797 5.19369 13.2074C5.15301 12.2352 5.11233 10.9753 5.11233 10.9753C3.43891 10.7802 2.00001 9.58466 2 7.90625L2.00012 6.37324C2.00027 4.51032 3.55462 3.00015 5.47205 3H11.6642Z" fill="#C4C2BD" style="fill:#C4C2BD;fill:color(display-p3 0.7686 0.7608 0.7412);fill-opacity:1;"/>
+        </svg>
+        <span>{{ gallery.commentsCount }}</span>
+      </div>
+      <div class="likes" *ngIf="gallery?.votesCount ?? 0 > 0">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 13.0014H3.75C2.78363 13.0014 2.00023 12.0317 2 10.8364V8.16551C2.00026 6.97023 2.78367 6.00145 3.75 6.00145H4V13.0014Z" fill="#C4C2BD" style="fill:#C4C2BD;fill:color(display-p3 0.7686 0.7608 0.7412);fill-opacity:1;"/>
+          <path d="M6.79102 2.58153C7.35431 1.79314 8.53967 1.81928 9.11816 2.58153C9.40783 2.96331 9.44892 3.38533 9.4668 3.78563C9.46676 4.3563 9.281 4.77645 9.11816 5.33348L11.9727 5.28563C13.0401 5.28563 13.9982 6.08324 14 7.2036C14.0007 7.88791 13.9547 8.76986 13.7695 9.61668C13.5877 10.4474 13.253 11.3378 12.6064 11.9477C11.8735 12.6387 10.9466 12.8697 9.76074 12.9536C8.65951 13.0314 6.94467 12.9889 5 12.9839V5.71239L6.79102 2.58153Z" fill="#C4C2BD" style="fill:#C4C2BD;fill:color(display-p3 0.7686 0.7608 0.7412);fill-opacity:1;"/>
+        </svg>
+        <span>{{ gallery.votesCount }}</span>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
