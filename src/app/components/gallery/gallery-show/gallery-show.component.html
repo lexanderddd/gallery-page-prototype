@@ -18,13 +18,13 @@
              *ngFor="let image of gallery.images; index as i"
              (click)="addLabel($event, i)"
         >
-          <img [src]="'/assets/images/' + image.webPath" />
+          <img #galleryImg [src]="'/assets/images/' + image.webPath" (load)="galleryImg.naturalWidth" />
 
           <div
             class="marker"
             *ngFor="let model of galleryModelsByGallery?.[gallery.slug]?.[image.id] || []"
-            [style.left.px]="model.posX"
-            [style.top.px]="model.posY"
+            [style.left.%]="galleryImg.naturalWidth ? (model.posX ?? 0) / galleryImg.naturalWidth * 100 : 0"
+            [style.top.%]="galleryImg.naturalHeight ? (model.posY ?? 0) / galleryImg.naturalHeight * 100 : 0"
             (click)="showModel($event, model)"
           >
             <img
